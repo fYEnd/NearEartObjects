@@ -41,7 +41,6 @@ class NearEarthObject:
         :param info: A dictionary of excess keyword arguments
         supplied to the constructor.
         """
-
         self.designation = info['pdes']
         self.name = default_if_empty(info['name'], None)
         self.diameter = default_if_empty(info['diameter'], float('nan'), float)
@@ -64,15 +63,13 @@ class NearEarthObject:
                f"is {is_hazardous} hazardous."
 
     def __repr__(self):
-        """Return `repr(self)`, a computer-readable
-        string representation of this object.
-        """
+        """Return `repr(self)`, a computer-readable string representation of this object."""
         return (f"NearEarthObject(designation={self.designation!r}, "
                 f"name={self.name!r}, "
                 f"diameter={self.diameter:.3f}, hazardous={self.hazardous!r})")
 
     def serialize(self):
-        """Method to produce a dictionary representation of self attributes"""
+        """Return serialized dictionary representation of self attributes."""
         serialize = {}
         serialize['name'] = self.name
         serialize['designation'] = self.designation
@@ -95,7 +92,7 @@ class CloseApproach:
     private attribute, but the referenced NEO is eventually replaced in the
     `NEODatabase` constructor.
     """
-    # If you make changes, be sure to update the comments in this file.
+
     def __init__(self, **info):
         """Create a new `CloseApproach`.
 
@@ -112,8 +109,7 @@ class CloseApproach:
 
     @property
     def time_str(self):
-        """Return a formatted representation of this `CloseApproach`'s
-        approach time.
+        """Return a formatted representation of this `CloseApproach`'s approach time.
 
         The value in `self.time` should be a Python `datetime` object.
         While a`datetime` object has a string representation,
@@ -133,22 +129,19 @@ class CloseApproach:
 
     def __str__(self):
         """Return `str(self)`."""
-
         time = f"{self.time_str}" if self.time else "unknown time/date"
         return f"A CloseApproach event at {time}, of {self.fullname} " \
                f"approaching Earth at a distance of {self.distance}au " \
                f"and a velocity of {self.velocity}km/s"
 
     def __repr__(self):
-        """Return `repr(self)`, a computer-readable string representation
-        of this object.
-        """
+        """Return `repr(self)`, a computer-readable string representation of this object."""
         return f"CloseApproach(time={self.time_str!r}, " \
                f"distance={self.distance:.2f}, " \
                f"velocity={self.velocity:.2f}, neo={self.neo!r})"
 
     def serialize(self):
-        """Method to produce a dictionary representation of self attributes"""
+        """Return serialized dictionary representation of self attributes."""
         serialize = {}
         serialize['datetime_utc'] = self.time_str
         serialize['distance_au'] = self.distance

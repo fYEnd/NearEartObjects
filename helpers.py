@@ -47,8 +47,7 @@ def datetime_to_str(dt):
 
 
 def default_if_empty(value, default_value, return_format=False):
-    """Accept variable and return the first if it is not resolved to False,
-       otherwise return the second.
+    """Accept variable and return the first if it is not resolved to False, otherwise return the second.
 
     :param value: variable to be checked if it's true.
     :param default_value: variable to be returned
@@ -66,8 +65,8 @@ def default_if_empty(value, default_value, return_format=False):
 
 
 def y_to_true(value):
-    """Resolve inputted value to True and other
+    """Resolve inputted value to True and other.
 
-    : param value:
+    :param value:
     """
     return value == 'Y'

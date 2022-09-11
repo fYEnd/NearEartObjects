@@ -1,5 +1,4 @@
-"""Provide filters for querying close approaches
-and limit the generated results.
+"""Provide filters for querying close approaches and limit the generated results.
 
 The `create_filters` function produces a collection of objects that is used by
 the `query` method to generate a stream of `CloseApproach` objects that match
@@ -41,8 +40,7 @@ class AttributeFilter:
     """
 
     def __init__(self, op, value):
-        """Construct a new `AttributeFilter` from a binary predicate
-        and a reference value.
+        """Construct a new `AttributeFilter` from a binary predicate and a reference value.
 
         The reference value will be supplied as the second (right-hand side)
         argument to the operator function. For example, an `AttributeFilter`
@@ -76,6 +74,7 @@ class AttributeFilter:
         raise UnsupportedCriterionError
 
     def __repr__(self):
+        """Return string representation of class object."""
         return f"{self.__class__.__name__}(op=operator.{self.op.__name__}, " \
                f"value={self.value})"
 
@@ -85,8 +84,7 @@ class DateFilter(AttributeFilter):
 
     @classmethod
     def get(cls, approach):
-        """Return approach time converted to datetime
-        object for the date filter.
+        """Return approach time converted to datetime object for the date filter.
 
         :param approach: A CloseApproach object
         :return: Converted time to datetime object.
@@ -125,8 +123,7 @@ class DiameterFilter(AttributeFilter):
 
     @classmethod
     def get(cls, approach):
-        """Return the diameter of the neo assigned to
-        the CloseApproach object for the diameter filter.
+        """Return the diameter of the neo assigned to the CloseApproach object for the diameter filter.
 
         :param approach: A CloseApproach object
         :return: the diameter of a NearEarthObject object.
@@ -135,14 +132,11 @@ class DiameterFilter(AttributeFilter):
 
 
 class HazardousFilter(AttributeFilter):
-    """Subclass of AttributeFilter to filter
-       CloseApproach objects by hazard.
-    """
+    """Subclass of AttributeFilter to filter CloseApproach objects by hazard."""
 
     @classmethod
     def get(cls, approach):
-        """Return the hazardous attribute of the neo assigned to
-        the CloseApproach object for the diameter filter.
+        """Return the hazardous attribute of the neo assigned to the CloseApproach object for the diameter filter.
 
         :param approach: A CloseApproach object
         :return: the hazardous attribute of a NearEarthObject object.
